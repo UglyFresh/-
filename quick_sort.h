@@ -6,9 +6,9 @@ class QuickSort {
 	/// <summary>
 	/// Алгоритм быстрой сортировки
 	/// </summary>
-	/// <param name="array"></param>
-	/// <param name="begin"></param>
-	/// <param name="end"></param>
+	/// <param name="array"> Массив </param>
+	/// <param name="begin"> Левый край </param>
+	/// <param name="end"> Правый край </param>
 	void Alghoritm(std::vector <int>&array, size_t begin, size_t end) {
 
 		int pivot = array[static_cast<size_t>((begin + end) / 2)];
