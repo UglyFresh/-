@@ -1,4 +1,5 @@
-/поя_2.vcxproj
-/поя_2.vcxproj.filters
-/поя_2.vcxproj.user
-x64/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*x64/
+*.obj

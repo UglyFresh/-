@@ -1,11 +1,10 @@
 #include "validation.h"
 
-//Проверка пользовательского ввода
 int ValidUserInput() {
 	
     int choice;
     while (!(std::cin >> choice)) {
-        std::cout << "Ошибка ввода! Введите вещественное число: ";
+        std::cout << "РћС€РёР±РєР° РІРІРѕРґР°! Р’РІРµРґРёС‚Рµ РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ: ";
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }

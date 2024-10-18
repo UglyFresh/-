@@ -1,12 +1,12 @@
 #include "file_handling.h"
 
-//Сохранение отсортированного массива в файл
+
 void FileInput(std::vector<int> array) {
 
 	std::ofstream file("array_after_sort.txt");
 
 	if (!file.is_open()) {
-		std::cout << "Ошибка открытия файла!\n";
+		std::cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!\n";
 	}
 	else {
 		for (size_t i = 0; i != array.size(); ++i) {
@@ -24,18 +24,18 @@ bool FileOutput(std::vector<int>& array) {
 	int num = 0;
 
 	if (!file.is_open()) {
-		std::cout << "Ошибка открытия файла!";
+		std::cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!";
 	}
 	else {
 		while (std::getline(file, line, '\t')) {
 			if (ValidFileInput(line)) {
 				int support = std::stoi(line);
 				array.push_back(support);
-				std::cout << "Элемент массива [" << num + 1 << "] равен: " << support << "\n";
+				std::cout << "Р­Р»РµРјРµРЅС‚ РјР°СЃСЃРёРІР° [" << num + 1 << "] СЂР°РІРµРЅ: " << support << "\n";
 				num++;
 			}
 			else {
-				std::cout << "Строка \"" << line << "\"не является целым числом" << "\n" << "\n";
+				std::cout << "РЎС‚СЂРѕРєР° \"" << line << "\"РЅРµ СЏРІР»СЏРµС‚СЃСЏ С†РµР»С‹Рј С‡РёСЃР»РѕРј" << "\n" << "\n";
 				return false;
 			}
 		}

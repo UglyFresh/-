@@ -3,6 +3,12 @@
 
 class QuickSort {
 	public: 
+	/// <summary>
+	/// Алгоритм быстрой сортировки
+	/// </summary>
+	/// <param name="array"></param>
+	/// <param name="begin"></param>
+	/// <param name="end"></param>
 	void Alghoritm(std::vector <int>&array, size_t begin, size_t end) {
 
 		int pivot = array[static_cast<size_t>((begin + end) / 2)];
