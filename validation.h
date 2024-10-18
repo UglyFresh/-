@@ -4,4 +4,5 @@
 #include <vector>
 #include <string>
 
-int ValidInput();
+int ValidUserInput();
+bool ValidFileInput(const std::string str);

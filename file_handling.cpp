@@ -17,8 +17,7 @@ void FileInput(std::vector<int> array) {
 	file.close();
 }
 
-//—ортировка массива из файла
-void FileOutput(std::vector<int>& array) {
+bool FileOutput(std::vector<int>& array) {
 
 	std::ifstream file("array_for_sort.txt");
 	std::string line;
@@ -29,10 +28,16 @@ void FileOutput(std::vector<int>& array) {
 	}
 	else {
 		while (std::getline(file, line, '\t')) {
-			int support{ std::stoi(line) };
-			std::cout << "Ёлемент массива [" << num + 1 << "] равен: " << support << "\n";
-			array.push_back(support);
-			num++;
+			if (ValidFileInput(line)) {
+				int support = std::stoi(line);
+				array.push_back(support);
+				std::cout << "Ёлемент массива [" << num + 1 << "] равен: " << support << "\n";
+				num++;
+			}
+			else {
+				std::cout << "—трока \"" << line << "\"не €вл€етс€ целым числом" << "\n" << "\n";
+				return false;
+			}
 		}
 	}
 

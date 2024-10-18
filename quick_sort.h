@@ -3,16 +3,12 @@
 
 class QuickSort {
 	public: 
-	QuickSort(std::vector<int> arr, int b, int e) : array(arr), begin(b), end(e){}
-	~QuickSort() {}
+	void Alghoritm(std::vector <int>&array, size_t begin, size_t end) {
 
-	//Функция сортировки
-	static void Sort(std::vector <int>& array, int begin, int end) {
+		int pivot = array[static_cast<size_t>((begin + end) / 2)];
 
-		int pivot = array[(begin + end) / 2];
-
-		int start = begin;
-		int finish = end;
+		size_t start = begin;
+		size_t finish = end;
 		// O(N * log N)
 		do {
 			//O(N)
@@ -35,18 +31,12 @@ class QuickSort {
 
 		//O(log N)
 		if (begin < finish) {
-			Sort(array, begin, finish);
+			Alghoritm(array, begin, finish);
 		}
 		//O(log N)
 		if (start < end) {
-			Sort(array, start, end);
+			Alghoritm(array, start, end);
 		}
 
 	}
-
-private:
-
-	std::vector <int> array;
-	int begin, end;
-
 };

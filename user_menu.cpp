@@ -22,14 +22,15 @@ int main() {
 	int choice;
 	int save_choice;
 	std::vector <int> array;
+	QuickSort sort;
 
-	for (;;){
+	while (true){
 		std::cout << "Выберите желаемый пункт меню: " << "\n" << MENU;
-		choice = ValidInput();
+		choice = ValidUserInput();
 
 		while (begin_choice < choice && choice > finish_choice) {
 			std::cout << "Ошибка! Выберите одно из предложенных значений: ";
-			choice = ValidInput();
+			choice = ValidUserInput();
 			std::cout << "\n";
 		}
 		choice = static_cast<user_choice>(choice);
@@ -38,14 +39,18 @@ int main() {
 		case MANUAL_INPUT:
 		
 			int value;
-			size_t array_size;
+			int array_size;
 
 			std::cout << "Введите желаемый размер массива: ";
-			array_size = ValidInput();
+			array_size = ValidUserInput();
+			if (array_size < 0) {
+				std::cout << "Введите значение больше нуля: ";
+				array_size = ValidUserInput();
+			}
 			array.resize(array_size);
 			for (size_t i = 0; i != array_size; ++i) {
 				std::cout << "Введите значение: ";
-				value = ValidInput();
+				value = ValidUserInput();
 				array[i] = value;
 				std::cout << "\n";
 			}
@@ -55,17 +60,17 @@ int main() {
 				std::cout << "Элемент [" << i + 1 << "] равен: " << array[i] << "\n";
 			}
 
-			QuickSort::Sort(array, 0, array.size() - 1);
+			sort.Alghoritm(array, 0, array.size() - 1);
 			std::cout << "Массива после сортировки: " << "\n";
 			for (size_t i = 0; i != array.size(); ++i) {
 				std::cout << "Элемент [" << i + 1 << "] равен: " << array[i] << "\n";
 			}
 
 			std::cout << "Желаете сохранить массив в файл? \n 1 - Сохранить, 2 - Не сохранять\n";
-			save_choice = ValidInput();
+			save_choice = ValidUserInput();
 			while (save_choice != 1 && save_choice != 2){
 				std::cout << "Ошибка! Выберите из предложенных значений: ";
-				save_choice = ValidInput();
+				save_choice = ValidUserInput();
 				std::cout << "\n";
 			}
 
@@ -79,19 +84,19 @@ int main() {
 		
 		case FILE_INPUT:
 		
-			FileOutput(array);
+			if (!FileOutput(array)) { break; }
 
-			QuickSort::Sort(array, 0, array.size() - 1);
+			sort.Alghoritm(array, 0, array.size() - 1);
 			std::cout << "Массива после сортировки: " << "\n";
 			for (size_t i = 0; i != array.size(); ++i) {
 				std::cout << "Элемент [" << i + 1 << "] равен: " << array[i] << "\n";
 			}
 
 			std::cout << "Желаете сохранить массив в файл? \n 1 - Сохранить, 2 - Не сохранять\n";
-			save_choice = ValidInput();
+			save_choice = ValidUserInput();
 			while (save_choice != 1 && save_choice != 2) {
 				std::cout << "Ошибка! Выберите из предложенных значений: ";
-				save_choice = ValidInput();
+				save_choice = ValidUserInput();
 				std::cout << "\n";
 			}
 
@@ -99,12 +104,13 @@ int main() {
 				FileInput(array);
 			}
 
+			array.clear();
+
 			break;
 		
 		case END: return EXIT_SUCCESS;
 		}
 
 	}
-
 
 }
